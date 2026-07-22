@@ -26,3 +26,12 @@ For identified breaking changes, MergeLens generates code patches, validates the
 
 ### Automated GitHub Integration
 MergeLens integrates seamlessly into GitHub workflows via webhooks, posting consolidated reviews for multi-dependency pull requests and setting confidence-gated check run statuses to prevent risky code merges.
+
+## Technology Stack
+
+* **Core Framework:** Python 3.11, FastAPI, Uvicorn, Pydantic V2
+* **Static Code Analysis:** Tree-sitter, NetworkX
+* **Database & Persistence:** Neon Serverless PostgreSQL, SQLAlchemy 2.0, Alembic
+* **AI & LLM Synthesis:** Google Gemini 3.6 Flash (`google-genai` SDK), OpenRouter API
+* **Release Intelligence:** PyPI Metadata API, OSV.dev Vulnerability Advisory API
+* **Testing & Sandboxed Validation:** Pytest, HTTPX Async Client
