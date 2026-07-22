@@ -1,0 +1,29 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Python & Virtual Environments
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Databases & Storage
+*.db
+*.sqlite
+*.sqlite3
+temp/
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
