@@ -31,6 +31,12 @@ async def github_webhook(
 
     print(f"[Webhook] Received GitHub event: {x_github_event}")
 
+    if x_github_event == "ping":
+        zen = body_json.get("zen", "MergeLens webhook active.")
+        hook_id = body_json.get("hook_id")
+        print(f"[Webhook] Received ping event hook_id={hook_id}: {zen}")
+        return {"status": "pong", "zen": zen, "hook_id": hook_id}
+
     if x_github_event == "pull_request":
         action = body_json.get("action")
         pr = body_json.get("pull_request", {})
