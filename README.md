@@ -35,3 +35,12 @@ MergeLens integrates seamlessly into GitHub workflows via webhooks, posting cons
 * **AI & LLM Synthesis:** Google Gemini 3.6 Flash (`google-genai` SDK), OpenRouter API
 * **Release Intelligence:** PyPI Metadata API, OSV.dev Vulnerability Advisory API
 * **Testing & Sandboxed Validation:** Pytest, HTTPX Async Client
+
+## Future Roadmap: Queued Batch Window Architecture
+
+To support a sustainable free and freemium hosting model on serverless/free-tier cloud infrastructure (such as Render's 750 monthly compute hours limit), MergeLens plans to introduce a **Queued Batch Window Architecture**:
+
+* **Silent Webhook Ingestion & Task Queuing:** When Dependabot, Renovate, or code commit webhooks fire during off-peak hours, a lightweight serverless receiver enqueues the task payload into Redis without spinning up heavy AST or AI worker instances.
+* **Scheduled Processing Window:** A scheduled cron trigger wakes the MergeLens processing server for a dedicated 2 to 3 hour daily window.
+* **Batch Execution & PR Review Posting:** During the operational window, worker threads process the queued repository jobs sequentially—performing AST indexing, release intelligence lookups, Gemini 3.6 Flash reasoning, and posting consolidated PR review comments and code migration patches.
+* **Quota Preservation:** This design ensures the platform stays operational 24/7 for webhook ingestion while using less than 100 compute hours per month, enabling permanent free-tier operations.
