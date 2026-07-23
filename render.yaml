@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mergelens
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_WEBHOOK_SECRET
+        value: development_secret
+      - key: OPENROUTER_MODEL
+        value: google/gemini-3.6-flash
