@@ -24,7 +24,7 @@ def test_webhook_ignored():
         json={"zen": "Practicality beats purity."}
     )
     assert response.status_code == 200
-    assert response.json()["status"] == "ignored"
+    assert response.json()["status"] == "pong"
 
 def test_manual_analysis_and_report():
     # Trigger a manual analysis

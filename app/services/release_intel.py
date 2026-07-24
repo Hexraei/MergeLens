@@ -112,7 +112,7 @@ class ReleaseIntelligenceEngine:
                     "version_upgrade": {"from": from_version, "to": to_version},
                     "release_notes": raw_notes[:3000]
                 }
-                ai_result = await self.ai_reasoner.analyze_upgrade(ai_payload)
+                ai_result = await self.ai_reasoner.synthesize_review(ai_payload)
                 # If AI returned specific migration steps, add to behavior changes
                 if "migration_steps" in ai_result:
                     for step in ai_result["migration_steps"]:
